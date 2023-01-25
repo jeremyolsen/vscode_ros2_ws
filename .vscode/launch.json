@@ -18,9 +18,9 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/install/lib/${input:package}/${input:program}",
-      "args": [],
-      "preLaunchTask": "build",
-      "stopAtEntry": true,
+      "args": ["RMW_IMPLEMENTATION=rmw_fastrtps_dynamic_cpp"],
+      // "preLaunchTask": "build",
+      "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "externalConsole": false,
       "MIMode": "gdb",
@@ -38,13 +38,13 @@
       "id": "package",
       "type": "promptString",
       "description": "Package name",
-      "default": "examples_rclcpp_minimal_publisher"
+      "default": "demo_nodes_cpp"
     },
     {
       "id": "program",
       "type": "promptString",
       "description": "Program name",
-      "default": "publisher_member_function"
+      "default": "listener"
     }
   ]
 }

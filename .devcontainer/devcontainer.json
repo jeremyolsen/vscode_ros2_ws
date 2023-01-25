@@ -1,6 +1,11 @@
 // See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
 	"dockerFile": "Dockerfile",
+	"name": "ROS2 Humble",
+	//"dockerComposeFile" :["docker-compose.yml"],
+	//"service" : "talker",
+	//"workspaceFolder": "/work",
+	//"shutdownAction": "stopCompose",
 	"build": {
 		"args": {
 			"WORKSPACE": "${containerWorkspaceFolder}"
@@ -8,12 +13,14 @@
 	},
 	"remoteUser": "ros",
 	"runArgs": [
-		"--network=host",
+		"--network=ros2_testing",
 		"--cap-add=SYS_PTRACE",
 		"--security-opt=seccomp:unconfined",
 		"--security-opt=apparmor:unconfined",
 		"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
+	// "appPort": [68, 111, 702, 7400, 7412, 7413, 56661, 59516, 60919, 62657],
+	// "forwardPorts": [68, 111, 702, 7400, 7412, 7413, 56661, 59516, 60919, 62657],
 	"containerEnv": {
 		"DISPLAY": "${localEnv:DISPLAY}",
 		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
@@ -38,6 +45,8 @@
 		"streetsidesoftware.code-spell-checker",
 		"twxs.cmake",
 		"yzhang.markdown-all-in-one",
-		"zachflower.uncrustify"
+		"zachflower.uncrustify",
+		"ms-vscode.cpptools-extension-pack"
 	]
+	// "postStartCommand": "sudo apt-get update && sudo rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -y --skip-keys \"fastcdr rti-connext-dds-6.0.1 urdfdom_headers\""
 }
